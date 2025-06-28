@@ -32,7 +32,7 @@
 The **Model Context Protocol (MCP)** deserves credit for being the **first open standard** that gathered the loose ends of function‑calling.
 The goal is to integrate LLM applications with external systems in a seamless way.
 
-But you do not need a new protocol with new challenges for that. A driver-based approach is all you need. It comes with a lot of benefits that MCP does not provide, like a real plug & play experience and more security.
+But you do not need a new protocol with new challenges for that. A driver-based approach is all you need. It comes with a lot of benefits that MCP does not provide, like a real **Plug & Play experience** and **more security**.
 
 In practice, many teams just need a **simple, secure way** to expose existing APIs to an LLM without introducing a brand‑new protocol stack with its own new challenges.
 
