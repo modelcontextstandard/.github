@@ -55,7 +55,7 @@ Think about a REST-over-HTTP driver: once written, *any* REST API can be used. N
 1. **Bridge** – transport layer (HTTP, AS2, CAN …)
 2. **Spec** – any machine‑readable function description (OpenAPI, JSON‑Schema …)
 
-Resulting in a swappable **driver** – comparable to device drivers in an OS.
+Resulting in a swappable **driver** – comparable to device drivers in an OS.<br>
 *Result: less boilerplate, fewer attack surfaces, fully reusable APIs.*
 
 MCS is a standard way of doing function calling – without enforcing its implementation.
