@@ -19,6 +19,8 @@ In practice, many teams just need a **simple, secure way** to expose existing AP
 
 At the end of the day, function calling is what connects LLMs with external systems.
 
+<br>
+
 So the question is: what is really needed to standardize this way?
 
 It turns out the challenge is best handled by **drivers**.
@@ -115,5 +117,11 @@ See **CONTRIBUTING.md** for details.
 
 Open a GitHub Discussion or mention **@your‑username** in an Issue/PR.
 
-> “LLMs are the new operating systems.” — Andrej Karpathy
-> **MCS supplies the drivers.**
+> "LLMs are the new operating systems." — Andrej Karpathy <br> **MCS supplies the drivers.**
+
+
+<br>
+
+<sub>
+(*) I don't like to invent the wheel again, for putting everything up and running. Thanks the team around of MCP to provide a working layout for docs and project organization.
+</sup>
