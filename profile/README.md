@@ -53,7 +53,17 @@ MCS is a standard way of doing function calling – without enforcing its implem
 
 ---
 
-## Proof of Concept – try MCS in 2 minutes
+
+## Project Structure
+
+- [specification](https://github.com/modelcontextprotocol/specification) – Protocol specification and documentation  
+- [docs](https://github.com/modelcontextprotocol/docs) – The documentation of MCS (comming soon)
+- [python-sdk](https://github.com/modelcontextprotocol/python-sdk) – Python implementation  
+- [typescript-sdk](https://github.com/modelcontextprotocol/typescript-sdk) – TypeScript implementation (planned)  
+- [mcs-pkg](https://github.com/modelcontextprotocol/mcs-pkg) – Official registry for publishing and discovering MCS-compatible drivers (planned)
+
+
+## Getting Started: Try the Proof of Concept – MCS in 2 minutes
 
 You can verify the MCS pattern with *any* LLM that has web access by spinning up the tiny FastAPI demo included in this repo.
 
@@ -105,14 +115,15 @@ We welcome contributions that
 
 * refine the formal description of the MCS pattern
 * provide **new drivers** for other transport layers or data formats
+* Build SDKs for other programming languages
 * improve docs & examples
+* Building a centalized MCS-compatible registry
 
 See **CONTRIBUTING.md** for details.
 
-> **Proof‑of‑Work Notice** – This repository is shared *as is*. PRs and issues are welcome, but there is **no guarantee** of review, merging or long‑term maintenance. Contributions will be evaluated based on alignment with research goals and available time.
+> **Proof‑of‑Work Notice** – This orga and its repositoris are shared *as is*. PRs and issues are welcome, but there is **no guarantee** of review, merging or long‑term maintenance. Contributions will be evaluated based on alignment with research goals and available time.
 
 ---
-
 ## Contact
 
 Open a GitHub Discussion or mention **@your‑username** in an Issue/PR.
