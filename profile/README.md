@@ -19,11 +19,11 @@
 
 ## Project Structure
 
-- [specification](https://github.com/modelcontextprotocol/specification) – Protocol specification and documentation  
-- [docs](https://github.com/modelcontextprotocol/docs) – The documentation of MCS (comming soon)
-- [python-sdk](https://github.com/modelcontextprotocol/python-sdk) – Python implementation  
-- [typescript-sdk](https://github.com/modelcontextprotocol/typescript-sdk) – TypeScript implementation (planned)  
-- [mcs-pkg](https://github.com/modelcontextprotocol/mcs-pkg) – Official registry for publishing and discovering MCS-compatible drivers (planned)
+- [specification](https://github.com/modelcontextstandard/specification) – Protocol specification and documentation  
+- [docs](https://github.com/modelcontextstandard/docs) – The documentation of MCS (comming soon)
+- [python-sdk](https://github.com/modelcontextstandard/python-sdk) – Python implementation  
+- [typescript-sdk](https://github.com/modelcontextstandard/typescript-sdk) – TypeScript implementation (planned)  
+- [mcs-pkg](https://github.com/modelcontextstandard/mcs-pkg) – Official registry for publishing and discovering MCS-compatible drivers (planned)
 
 ---
 
