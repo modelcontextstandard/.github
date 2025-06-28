@@ -8,6 +8,25 @@
 
 ---
 
+## Key Points at a Glance
+
+* **Open standards first** – reuse OpenAPI, REST, OAuth, Docker …
+* **No custom protocol** – simpler networking, easier auditing, let the driver to its thing.
+* **Driver pattern** – once a driver exists (REST‑HTTP, EDI‑AS2, MCP‑stdio, Filesystem, Printers …) every LLM app can use it
+* **Optional autostart** – run tools in containers when useful, *explicitly* and sandboxed
+* **Complimentary to MCP** – you can even write an "MCP‑over‑SSE" or "MCP-over-STDIO" driver
+
+
+## Project Structure
+
+- [specification](https://github.com/modelcontextprotocol/specification) – Protocol specification and documentation  
+- [docs](https://github.com/modelcontextprotocol/docs) – The documentation of MCS (comming soon)
+- [python-sdk](https://github.com/modelcontextprotocol/python-sdk) – Python implementation  
+- [typescript-sdk](https://github.com/modelcontextprotocol/typescript-sdk) – TypeScript implementation (planned)  
+- [mcs-pkg](https://github.com/modelcontextprotocol/mcs-pkg) – Official registry for publishing and discovering MCS-compatible drivers (planned)
+
+---
+
 ## Why MCS exists
 
 The **Model Context Protocol (MCP)** deserves credit for being the **first open standard** that gathered the loose ends of function‑calling.
@@ -40,27 +59,6 @@ Resulting in a swappable **driver** – comparable to device drivers in an OS.
 *Result: less boilerplate, fewer attack surfaces, fully reusable APIs.*
 
 MCS is a standard way of doing function calling – without enforcing its implementation.
-
----
-
-## Key Points at a Glance
-
-* **Open standards first** – reuse OpenAPI, REST, OAuth, Docker …
-* **No custom protocol** – simpler networking, easier auditing, let the driver to its thing.
-* **Driver pattern** – once a driver exists (REST‑HTTP, EDI‑AS2, MCP‑stdio, Filesystem, Printers …) every LLM app can use it
-* **Optional autostart** – run tools in containers when useful, *explicitly* and sandboxed
-* **Complimentary to MCP** – you can even write an "MCP‑over‑SSE" or "MCP-over-STDIO" driver
-
----
-
-
-## Project Structure
-
-- [specification](https://github.com/modelcontextprotocol/specification) – Protocol specification and documentation  
-- [docs](https://github.com/modelcontextprotocol/docs) – The documentation of MCS (comming soon)
-- [python-sdk](https://github.com/modelcontextprotocol/python-sdk) – Python implementation  
-- [typescript-sdk](https://github.com/modelcontextprotocol/typescript-sdk) – TypeScript implementation (planned)  
-- [mcs-pkg](https://github.com/modelcontextprotocol/mcs-pkg) – Official registry for publishing and discovering MCS-compatible drivers (planned)
 
 
 ## Getting Started: Try the Proof of Concept – MCS in 2 minutes
@@ -123,7 +121,7 @@ See **CONTRIBUTING.md** for details.
 
 > **Proof‑of‑Work Notice** – This orga and its repositoris are shared *as is*. PRs and issues are welcome, but there is **no guarantee** of review, merging or long‑term maintenance. Contributions will be evaluated based on alignment with research goals and available time.
 
----
+
 ## Contact
 
 Open a GitHub Discussion or mention **@your‑username** in an Issue/PR.
