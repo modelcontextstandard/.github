@@ -1,7 +1,7 @@
 # Model Context Standard (MCS)
 
 <p align="center">
-  <img src="docs/assets/mcs-logo.svg" width="140" alt="MCS logo">
+  <img src="assets/mcs-logo-lg.jpg" alt="MCS logo">
 </p>
 
 **A lightweight driver pattern that links any LLM to the digital world – only the essentials required.**
