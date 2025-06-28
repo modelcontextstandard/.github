@@ -123,5 +123,5 @@ Open a GitHub Discussion or mention **@your‑username** in an Issue/PR.
 <br>
 
 <sub>
-(*) I don't like to invent the wheel again, for putting everything up and running. Thanks the team around of MCP to provide a working layout for docs and project organization.
-</sup>
+<b>Note:</b> While MCS takes a different approach, it builds on the groundwork laid by the MCP team. Their effort in structuring documentation and project layout has been instrumental and deeply appreciated while put the idea behind MCS online. Without MCP, the need for a standard like MCS might not have become so visible.
+</sub>
