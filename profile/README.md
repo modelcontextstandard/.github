@@ -20,22 +20,22 @@ MCS is a concept of a standard for integrating LLMs with external systems, focus
 
 That's it. MCS groups functions by protocol and transport, eliminating redundant rewrites. Unlike MCP, where you often rebuild API wrappers from scratch, MCS lets you configure a driver with URLs to function specs. Mix and match as needed, extend or trim functions by adding/removing URLs, or craft your own specs. Share them on CDNs, no need for code changes anymore. Simple and powerful!
 
-### Driver Magic - Write once, Use everywhere
+### -- Driver Magic - Write once, Use everywhere --
 Build a driver for REST-HTTP, EDI-AS2, Filesystem-localfs, CAN-Bus or even MCP-stdio. **Every** LLM app can plug into it. No more wrappers or flaky setups. Once a driver exists, you reuse it without prompt headaches or protocol battles. Just configure and go! 
 
-### Zero Custom Protocol Overhead
+### -- Zero Custom Protocol Overhead --
 Forget new stacks with bugs and auth nightmares. MCS leverages battle-tested standards first like OpenAPI, REST, OAuth for instant compatibility, easier auditing, more security, and seamless integration into existing toolchains.
 
-### Plug & Play Security
+### -- Plug & Play Security --
 Say goodbye to malicious servers (up to 8% on Github). MCS promotes sandboxed containers and explicit autostarts. Safe by design, no hidden risks. It utilizes existing software repositories for deployment, with built-in checksum verification inspired by apt or Maven for more trust already in mind.
 
-### Autostart? Mostly Unnecessary, but Optional and Done right
+### -- Autostart? Mostly Unnecessary, but Optional and Done right --
 MCP treats autostart as a "feature", but it is a design flaw. STDIO forces it, leading to unnecessary processes and risks. With MCS, you don't need it in 99% of cases. Interfaces are already available via existing transports (e.g., our mcs-driver-filesystem-localfs binds local systems directly). No more Wrapper Server spin up needed.
 
-### Complementary to MCP, but Better
+### -- Complementary to MCP, but Better --
 MCP pioneered standardization, but MCS fixes its pitfalls. No Mandatory wrappers and true modularity. It delivers the Plug & Play experience that MCP promised but rarely achieved without high effort. You Love MCP? No problem, wrap MCP Servers as MCS drivers for seamless migration (e.g. mcs-driver-mcp-stdio or mcs-driver-mcp-sse, share them and everyone can benefit without rewriting) .
 
-### Infinite Scalability
+### -- Infinite Scalability --
 From Web APIs to industrial IoT, MCS drivers abstract the complexity. Optimize prompts per model inside the driver or orchestrators. Every LLM app benefits without bothering about model-specific quirks. Just plug in and go!
 
 
