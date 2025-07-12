@@ -4,70 +4,102 @@
   <img src="assets/mcs-logo-lg.jpg" alt="MCS logo">
 </p>
 
-**A lightweight driver pattern that links any LLM to the digital world – only the essentials required.**
+**Unlock the Power of LLMs: Connect Any Model to the Real World with Plug & Play Drivers - Simpler, Safer and Infinitely Scalable**
 
----
+Imagine transforming your LLM into a supercharged operating system. Effortlessly linking to APIs, databases, industrial systems, or even printers without reinventing the wheel. 
 
-## Key Points at a Glance
+MCS is the lightweight standard that makes it happen. 
 
-* **Open standards first** – reuse OpenAPI, REST, OAuth, Docker …
-* **No custom protocol** – simpler networking, easier auditing, let the driver to its thing.
-* **Driver pattern** – once a driver exists (REST‑HTTP, EDI‑AS2, MCP‑stdio, Filesystem, Printers …) every LLM app can use it
-* **Optional autostart** – run tools in containers when useful, *explicitly* and sandboxed
-* **Complimentary to MCP** – you can even write an "MCP‑over‑SSE" or "MCP-over-STDIO" driver
+No bloated protocols, no security headaches. Just reusable drivers that work everywhere. If you're tired of MCP's overhead and vulnerabilities, MCS is your upgrade. Built on proven tech like OpenAPI and REST, it's the future of AI integration. 
+
+Ready to revolutionize your apps? Dive in!
+
+## Key Benefits: Why you will fall in love with MCS
+
+* **Driver Magic - Write once, Use everywhere** - Build a driver for REST-HTTP, EDI-AS2, Filesystem-localfs, CAN-Bus or even MCP-stdio. **Every** LLM app can plug into it. No more wrappers or flaky setups. Once a driver exists, you reuse it without prompt headaches or protocol battles. Just configure and go!
+* **Zero Custom Protocol Overhead** - Forget new stacks with bugs and auth nightmares. MCS leverages battle-tested standards first like OpenAPI, REST, OAuth for instant compatibility, easier auditing, more security, and seamless integration into existing toolchains.
+* **Plug & Play Security** - Say goodbye to malicious servers (up to 8% on Github). MCS promotes sandboxed containers and explicit autostarts. Safe by design, no hidden risks. It utilizes existing software repositories for deployment, with built-in checksum verification inspired by apt or Maven for more trust already in mind.
+* **Autostart? Mostly Unnecessary, but Optional and Done right** - MCP treats autostart as a "feature", but it is a design flaw. STDIO forces it, leading to unnecessary processes and risks. With MCS, you don't need it in 99% of cases. Interfaces are already available via existing transports (e.g., our mcs-driver-filesystem-localfs binds local systems directly). No more Wrapper Server spin up needed.
+* **Complementary to MCP, but Better** - MCP pioneered standardization, but MCS fixes its pitfalls. No Mandatory wrappers and true modularity. It delivers the Plug & Play experience that MCP promised but rarely achieved without high effort. You Love MCP? No problem, wrap MCP Servers as MCS drivers for seamless migration (e.g. mcs-driver-mcp-stdio or mcs-driver-mcp-sse, share them and everyone can benefit without rewriting) .
+* **Infinite Scalability** - From Web APIs to industrial IoT, MCS drivers abstract the complexity. Optimize prompts per model inside the driver or orchestrators. Every LLM app benefits without bothering about model-specific quirks. Just plug in and go!
+
+MCS is a concept of a standard for integrating LLMs with external systems, focusing on what's truly essential: **Function calling**. At its core, you only need text-based input (tokens) and a parser to detect if the model wants to call something. Everything else is just decoration.
+
+That's it. MCS groups functions by protocol and transport, eliminating redundant rewrites. Unlike MCP, where you often rebuild API wrappers from scratch, MCS lets you configure a driver with URLs to function specs. Mix and match as needed, extend or trim functions by adding/removing URLs, or craft your own specs. Share them on CDNs, no need for code changes anymore. Simple, powerful, and ready for anything.
 
 
 ## Project Structure
 
-- [specification](https://github.com/modelcontextstandard/specification) – Protocol specification and documentation  
-- [docs](https://github.com/modelcontextstandard/docs) – The documentation of MCS (comming soon)
-- [python-sdk](https://github.com/modelcontextstandard/python-sdk) – Python implementation  
-- [typescript-sdk](https://github.com/modelcontextstandard/typescript-sdk) – TypeScript implementation (planned)  
-- [mcs-pkg](https://github.com/modelcontextstandard/mcs-pkg) – Official registry for publishing and discovering MCS-compatible drivers (planned)
+- [specification](https://github.com/modelcontextstandard/specification) – The core Protocol Spec. We're optimizing this together - Join the discussion!  
+- [docs](https://github.com/modelcontextstandard/docs) – In-depth guides and examples (coming soon)
+- [python-sdk](https://github.com/modelcontextstandard/python-sdk) – Ready to use Python implementation with reference drivers. Install via pip and start building.  
+- [typescript-sdk](https://github.com/modelcontextstandard/typescript-sdk) – TypeScript SDK (in progress – based on the Python implementation)
+- [mcs-pkg](https://github.com/modelcontextstandard/mcs-pkg) – Centralized registry for discovering and publishing MCS drivers (planned – think apt for AI tools with autodiscovery and installation).
+- [example-drivers] - A sample driver repo for tutorials and testing. (coming soon)
+- [mcs-tool-driver-filesystem-localfs](https://github.com/modelcontextstandard/mcs-tool-driver-filesystem-localfs) – A reference driver for local file system access.
 
----
-
-## Why MCS exists
-
-The **Model Context Protocol (MCP)** deserves credit for being the **first open standard** that gathered the loose ends of function‑calling.
-The goal is to integrate LLM applications with external systems in a seamless way.
-
-But you do not need a new protocol with new challenges for that. A driver-based approach is all you need. It comes with a lot of benefits that MCP does not provide, like a real **Plug & Play experience** and **more security**.
-
-In practice, many teams just need a **simple, secure way** to expose existing APIs to an LLM without introducing a brand‑new protocol stack with its own new challenges.
-
-At the end of the day, function calling is what connects LLMs with external systems.
-
-<br>
-
-So the question is: what is really needed to standardize this way?
-
-It turns out the challenge is best handled by **drivers**.
-
-LLMs are becoming the center of a new software stack. Like an OS, they need to talk to peripherals. That is exactly what drivers are for.
-
-Drivers can be written once and reused across use cases.
-
-Think about a REST-over-HTTP driver: once written, *any* REST API can be used. No more wrappers needed to connect LLMs to it.
-
-**MCS trims the idea down to two building blocks**
-
-1. **Bridge** – transport layer (HTTP, AS2, CAN …)
-2. **Spec** – any machine‑readable function description (OpenAPI, JSON‑Schema …)
-
-Resulting in a swappable **driver** – comparable to device drivers in an OS.<br>
-*Result: less boilerplate, fewer attack surfaces, fully reusable APIs.*
-
-MCS is a standard way of doing function calling – without enforcing its implementation.
+Best to start with reading the [specification](https://github.com/modelcontextstandard/specification) to understand the main concepts before starting to build your own drivers. Suggested is to read the Python SDK too to get an idea how to build an SDK in a different language.
 
 
-## Getting Started: Try the Proof of Concept – MCS in 2 minutes
 
-You can verify the MCS pattern with *any* LLM that has web access by spinning up the tiny FastAPI demo included in this repo.
+## Why MCS exists: Solving the Pain Points with Smarter Design
+
+Let’s cut through the noise. LLMs are poised to become the core of our software stacks, but connecting them to the real world? Still a chaotic mess. MCP tried to solve this. And to be fair, it was a damn good start. The first serious attempt to standardize function calling. It gave developers a protocol to latch onto. It made function calling feel like more than just a hack. Kudos to Anthropic and the MCP team for sparking the revolution!
+
+But let's be real, MCP is bloated. New protocol stack that introduces fresh risks, flaky implementations, auth headaches and scary vulnerabilities [1](https://thehackernews.com/2025/07/critical-vulnerability-in-anthropics.html), [2](https://www.oligo.security/blog/critical-rce-vulnerability-in-anthropic-mcp-inspector-cve-2025-49596), [3](https://thejournal.com/articles/2025/07/08/report-finds-agentic-ai-protocol-vulnerable-to-cyber-attacks.aspx), [4](https://noailabs.medium.com/mcp-security-issues-emerging-threats-in-2025-7460a8164030), [5](https://www.redhat.com/en/blog/model-context-protocol-mcp-understanding-security-risks-and-controls) et al.
+
+Want to call an API? Spin up an MCP wrapper server. Another API? Another server. User-specific tweaks? More wrappers. It overcomplicates what should be dead simple. Double the amount of servers running, one for the source API and one for the MCP wrapper.
+
+And that autostart "feature"? Sounds convenient, but it's a subtle design flaw. STDIO forces it, spawning unnecessary processes that bloat your system and invite risks. Like untrusted code running with user privileges. One slip, and you have a security nightmare.
+
+This chaos sparked innovation. Without MCP highlighting the need for a standard, MCS wouldn't exist. But MCP tackled the problem from the protocol side, when it's really a driver challenge.
+
+**Enter MCS!**
+
+A pragmatic evolution that strips it down to essentials. What truly connects LLMs to the world? [Function calling](https://arxiv.org/abs/2205.12255)! Text in, text out – that's all an LLM handles. So, you need a parser to detect calls. 
+
+Simple!
+
+The key question: What's really needed to standardize this?
+
+It turns out, drivers are the answer. LLMs are becoming the new operating systems (as Andrej Karpathy puts it), and like any OS, they need drivers to talk to peripherals.
+
+MCS trims the fat to two building blocks:
+
+    Spec: Machine-readable function descriptions (OpenAPI, JSON-Schema) – use standards if possible!
+    Bridge: Transport layers (HTTP, AS2, CAN) – handled by parsers.
+
+Result? Drivers act like OS peripherals: Write once (e.g., a REST-over-HTTP driver), reuse forever across apps, models, and platforms. No more wrappers for existing APIs. Lower costs, fewer attack surfaces. 
+
+Autostart? You won't need it 99% of the time. Leverage existing interfaces directly (like our mcs-driver-filesystem-localfs for seamless local binding, no extra servers). For rare needs, make it optional, explicit, and secure. Virtualized with containers like Docker for sandboxing and enhanced control.
+
+Here's the real power: Those painstakingly optimized prompts? They live inside the driver. Once perfected, they're reusable forever. No more reinventing the wheel. 
+For Developers that means: Plug in a driver. Done! 
+No more prompt engineering on your side. It makes integration modular, composable, and insanely easy.
+
+And if you still want to use MCP? Fine. Wrap it. Turn it into an MCS driver.
+Now anyone can use it, without even knowing how MCP works.
+
+**No more chaos. No more hacks. No more bloat.**
+Just drivers that get the job done.
+
+That’s **MCS**.
+
+
+P.S: 
+Developers: Ditch the hassle. Embrace the power of LLMs without mastering prompts.
+MCS delivers.
+
+
+
+## Getting Started: Experience the WoW Moment in 2 Minutes
+
+Verify MCS with any web-enabled LLM. Spin up our tiny FastAPI demo – it exposes an OpenAPI spec and a Fibonacci tool (doubled to catch hallucinations).
+
 
 ```bash
 # clone on a VPS / cloud VM with a public DNS or IP
-$ git clone <repo-url>
+$ git clone https://github.com/modelcontextstandard/modelcontextstandard.git
 $ cd modelcontextstandard
 $ docker compose -f docker/quickstart/docker-compose.yml up -d  # exposes :8000 on your public host
 # optional: use a tunnel such as ngrok or cloudflared if you do not have a static IP
@@ -75,13 +107,11 @@ $ docker compose -f docker/quickstart/docker-compose.yml up -d  # exposes :8000 
 
 > 🛠️ Tip: Platforms like **Coolify** or **Render** make one‑click deployment of Dockerised apps very easy.
 
-No server handy? A public demo is **temporarily** available at:
+No server handy? Try the temp public demo (up while supplies last):
 
 ```
-https://mcs-quickstart.coolify.alsdienst.de
+https://mcs-quickstart-html.coolify.alsdienst.de
 ```
-
-(as long as the endpoint is up).
 
 The demo service is implemented in `fastapi_server_mcs_quickstart.py` and exposes two endpoints:
 
@@ -90,41 +120,49 @@ The demo service is implemented in `fastapi_server_mcs_quickstart.py` and expose
 | `/openapi-html`       | serves the OpenAPI spec as HTML (LLM‑readable)     |
 | `/tools/fibonacci?n=` | returns *2 × Fibonacci(n)* to detect hallucination |
 
-#### How to test with an LLM
+#### Test it Live with an LLM
 
 1. Ensure the demo is reachable under a **public domain** (or use the hosted URL above).
 2. Ask the LLM to fetch `/openapi-html` and construct the URL for the Fibonacci tool.
-3. In a second prompt, ask the LLM to visit that URL (e.g. `...?n=8`).
-4. A correct call returns **34**. If the model answers **21**, it hallucinated.
+3. (if needed) In a second prompt, ask the LLM to visit that URL (e.g. `...?n=8`).
+4. A correct call returns **42**. If the model answers **21**, it hallucinated.
+
+#### Real World Results
+
+Click on the links to see the results in the chats with the LLMs.
 
 | Model             | Result | Notes                  |
 | ----------------- | ------ | ---------------------- |
-| ChatGPT (Browser) | ✅      | requires two prompts   |
-| Claude 3 (web)    | ✅      | two‑step flow          |
+| ChatGPT (Browser) | ✅      | [requires two prompts](https://chatgpt.com/c/68582012-7c70-8009-8c39-b5d05613ecd8)   |
+| Claude 3 (web)    | ✅      | [two‑step flow](https://claude.ai/share/57128a2d-22f8-440f-a09d-41018459d94f), restricted so it could not be done in one call          |
 | Gemini            | ❌      | refuses second request |
-| Grok              | ❌      | mis‑parses OpenAPI     |
-| DeepSeek          | ❌      | hallucination          |
+| Grok 4            | ✅ Partial      | [Seems to work](https://grok.com/share/bGVnYWN5_f8e10a15-65a9-47de-b43e-c72d9c004af9), but result is not readable by Groks browser (Minimal HTML Output)     |
+| DeepSeek          | ❌      | hallucination, server call never happend, ever         |
 
----
+MCS works out-of-the-box with all LLMs that support web access. Issues only arises from technical limitations the browser had.
+Now imagine scaling to your APIs!
 
-## Contributing
 
-We welcome contributions that
+## Contributing: Join the Revolution
 
-* refine the formal description of the MCS pattern
-* provide **new drivers** for other transport layers or data formats
-* Build SDKs for other programming languages
-* improve docs & examples
-* Building a centalized MCS-compatible registry
+We're building an open ecosystem – your ideas power it! Focus areas:
+- Refine the spec: Add edge cases, model-specific optimizations. Reduce to the Max!
+- New Drivers: Craft ones for GraphQL, MQTT, or niche like Printers/CAN-Bus. Use our Python SDK as blueprint.
+- SDKs: Flesh out TypeScript (we'll generate from Python – interfaces like MCSDriver).
+- Tutorials: Create a Medium post on "Building a Custom Driver" using our example-repo. Show: Init driver, fetch system prompt, pipe LLM response prompts handled automatically!
+- Registry: Help launch mcs-pkg for driver discovery/sharing.
+- Docs/Examples: Real-world integrations, security best practices.
 
-See **CONTRIBUTING.md** for details.
 
-> **Proof‑of‑Work Notice** – This orga and its repositoris are shared *as is*. PRs and issues are welcome, but there is **no guarantee** of review, merging or long‑term maintenance. Contributions will be evaluated based on alignment with research goals and available time.
+See CONTRIBUTING.md for guidelines. PRs welcome. Let's see what else is possible!
+
+> **Proof‑of‑Work Notice** – Repos shared as-is. PRs/issues evaluated based on alignment and time. No guarantees, but great contributions shine!
 
 
 ## Contact
 
-Open a GitHub Discussion or mention **@your‑username** in an Issue/PR.
+Open a GitHub Discussion, file an Issue/PR, or tag @bizrockman. 
+For deeper dives: modelcontextstandard.io (coming soon – your hub for specs, demos, and community).
 
 > "LLMs are the new operating systems." — Andrej Karpathy <br> **MCS supplies the drivers.**
 
@@ -132,5 +170,5 @@ Open a GitHub Discussion or mention **@your‑username** in an Issue/PR.
 <br>
 
 <sub>
-<b>Note:</b> While MCS takes a different approach, it builds on the groundwork laid by the MCP team. Their effort in structuring documentation and project layout has been instrumental and deeply appreciated while put the idea behind MCS online. Without MCP, the need for a standard like MCS might not have become so visible.
+<b>Note:</b> While MCS takes a different approach, it builds on the groundwork laid by the MCP team. Their effort in structuring documentation and project layout has been instrumental and deeply appreciated while putting the idea behind MCS online. Without MCP, the need for a standard like MCS might not have become so visible.
 </sub>
