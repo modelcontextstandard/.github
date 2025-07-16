@@ -14,7 +14,7 @@ Ready to Build?
 ## Key Benefits: Why Choose MCS?
 
 MCS is a lightweight standard focused on what's essential for **connecting LLMs to real systems**.  It is **function calling** at its core.
-Instead of building custom wrappers or servers, you configure reusable drivers that use existing specs like OpenAPI.  
+Instead of building custom wrappers or servers, you configure reusable drivers that use existing API with standard specs like OpenAPI.  
 Mix and match, extend or trim functions by URL, no redeploys, no prompt engineering headaches, and no code changes.
 
 ### ✅ Write once, Use everywhere
@@ -28,7 +28,7 @@ MCS avoids custom stacks and utilizes battle-tested statndards first like OpenAP
 If your API already exists, why wrap it again? MCS connects directly to it. 
 Skip the wrapper server. Just point to the spec and you're ready to go.
 
-### ✅ Optimized Prompts, Built-In
+### ✅ Optimized Prompts? Built-In
 MCS drivers include refined prompts tested across models. 
 No manual prompt tuning on the client side needed. MCS handles model-specific quirks automatically.
 It's future-proof too with potential dynamic hubs using checksums to auto-load updated, high-performance versions for new models. 
