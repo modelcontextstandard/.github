@@ -8,8 +8,11 @@ MCS is the lightweight standard that makes it happen.
 
 No bloated protocols, no security headaches. Just reusable drivers that work everywhere. If you're tired of MCP's overhead and vulnerabilities, MCS is your upgrade. Built on proven tech like OpenAPI and REST, it's the future of AI integration.
 
-Ready to Build?
-
+Ready to Build?\
+→ Start with the [2-minute quickstart](#quickstart-see-it-in-action-in-under-2-minutes)
+→ Build your first driver with the [Python SDK](https://github.com/modelcontextstandard/python-sdk)
+→ Or use ready-made drivers: REST-HTTP (Python SDK), [Filesystem-localfs](https://github.com/modelcontextstandard/msc-tool-driver-filesystem-localfs), and more coming
+→ Still curious? Yes, you might actually want to [Read The Friendly Manual](https://modelcontextstandard.io/)
 
 ## Key Benefits: Why Choose MCS?
 
@@ -22,7 +25,7 @@ Build a driver once for REST-HTTP, EDI-AS2, Filesystem-localfs or even CAN-Bus o
 No more wrappers, no more reimplementation or endless prompt engineering. Just configure and connect.
 
 ### ✅ Leverages Proven Protocols
-MCS avoids custom stacks and utilizes battle-tested statndards first like OpenAPI, REST, OAuth. This ensures better compatibility, more security, easier auditing and seamless integration into existing toolchains.
+MCS avoids custom stacks and utilizes battle-tested standards first like OpenAPI, REST, OAuth. This ensures better compatibility, more security, easier auditing and seamless integration into existing toolchains.
 
 ### ✅ No More Glue Code
 If your API already exists, why wrap it again? MCS connects directly to it. 
@@ -128,13 +131,13 @@ The demo shows the minimal setup needed to close the gap between LLM and real-wo
 ## Why MCS exists: The Problem with Current Solutions
 LLMs are becoming the core of modern software stacks, but connecting them to external systems remains unnecessarily complex. MCP deserves credit for being the first serious attempt to standardize function calling. It sparked the revolution and gave developers a protocol to build upon.
 
-But let's be real, MCP is bloated.
+But let's be real, MCP comes with a significant overhead.
 
 ### The Protocol Overhead Problem
 MCP creates a new protocol stack on top of JSON-RPC, essentially reimplementing what HTTP has solved for decades. This means:
 
 - Reinventing proven solutions: Authentication, request handling, error management – all rebuilt from scratch
-- New security vulnerabilities: Recent discoveries show the risks of custom protocol implementations  [2](https://thehackernews.com/2025/07/critical-vulnerability-in-anthropics.html), [3](https://www.oligo.security/blog/critical-rce-vulnerability-in-anthropic-mcp-inspector-cve-2025-49596), [4](https://thejournal.com/articles/2025/07/08/report-finds-agentic-ai-protocol-vulnerable-to-cyber-attacks.aspx), [5](https://noailabs.medium.com/mcp-security-issues-emerging-threats-in-2025-7460a8164030), [6](https://www.redhat.com/en/blog/model-context-protocol-mcp-understanding-security-risks-and-controls) et al.
+- New security vulnerabilities: Recent discoveries show the risks of custom protocol implementations  [2](https://thehackernews.com/2025/07/critical-vulnerability-in-anthropics.html), [3](https://www.oligo.security/blog/critical-rce-vulnerability-in-anthropic-mcp-inspector-cve-2025-49596), [4](https://thejournal.com/articles/2025/07/08/report-finds-agentic-ai-protocol-vulnerable-to-cyber-attacks.aspx), [5](https://noailabs.medium.com/mcp-security-issues-emerging-threats-in-2025-7460a8164030), [6](https://www.redhat.com/en/blog/model-context-protocol-mcp-understanding-security-risks-and-controls) etc.
 - Additional complexity: Developers must learn new patterns instead of leveraging existing knowledge
 - New Tooling: You can not simply reuse what you build with MCP
   
@@ -248,6 +251,7 @@ MCP pioneered the concept, but MCS makes it practical. While MCP requires rebuil
 | **Reusability** | API-specific servers | Universal protocol drivers |
 | **Security Model** | New attack surfaces | Security delivered by used standard |
 | **Tooling** | Custom debugging/monitoring | Standard tools can be used |
+| **Learning Curve** | High (new protocol) | Low (uses familiar standards) |
 | **Integration Effort** | High (wrapper + client code) | Low (configure driver) |
 
 
