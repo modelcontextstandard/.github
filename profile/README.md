@@ -9,9 +9,9 @@ MCS is the lightweight standard that makes it happen.
 No bloated protocols, no security headaches. Just reusable drivers that work everywhere. If you're tired of MCP's overhead and vulnerabilities, MCS is your upgrade. Built on proven tech like OpenAPI and REST, it's the future of AI integration.
 
 Ready to Build?\
-→ Start with the [2-minute quickstart](#quickstart-see-it-in-action-in-under-2-minutes)
-→ Build your first driver with the [Python SDK](https://github.com/modelcontextstandard/python-sdk)
-→ Or use ready-made drivers: REST-HTTP (Python SDK), [Filesystem-localfs](https://github.com/modelcontextstandard/msc-tool-driver-filesystem-localfs), and more coming
+→ Start with the [2-minute quickstart](#quickstart-see-it-in-action-in-under-2-minutes)\
+→ Build your first driver with the [Python SDK](https://github.com/modelcontextstandard/python-sdk)\
+→ Or use ready-made drivers: REST-HTTP (Python SDK), [Filesystem-localfs](https://github.com/modelcontextstandard/msc-tool-driver-filesystem-localfs), and more coming\
 → Still curious? Yes, you might actually want to [Read The Friendly Manual](https://modelcontextstandard.io/)
 
 ## Key Benefits: Why Choose MCS?
