@@ -33,7 +33,7 @@ Skip the wrapper server. Just point to the spec and you're ready to go.
 
 ### ✅ Optimized Prompts? Built-In
 MCS drivers include refined prompts tested across models. 
-No manual prompt tuning on the client side needed. MCS handles model-specific quirks automatically.
+No manual prompt tuning on the client/app side needed. MCS handles model-specific quirks automatically.
 It's future-proof too with potential dynamic hubs using checksums to auto-load updated, high-performance versions for new models. 
 
 ### ✅ Autostart? Not Required
@@ -146,7 +146,7 @@ MCP creates a new protocol stack on top of JSON-RPC, essentially reimplementing 
 ### The Wrapper Server Multiplication
 MCP's architecture forces you to create wrapper servers for every integration:
 
-`Your API → MCP Wrapper Server → MCP Client → LLM`
+`Your API → MCP Wrapper Server → MCP Client → App → LLM`
 
 This creates several problems:
 
@@ -167,7 +167,7 @@ MCP's STDIO-based autostart spawns processes with user privileges, creating pote
 Research suggests up to 8% of MCP servers on GitHub contain potentially malicious code [1](https://blog.virustotal.com/2025/06/what-17845-github-repos-taught-us-about.html).
 
 ### The Development Burden
-For every MCP client developer:
+For every MCP client/app developer:
 - Master prompt engineering for each model (again)
 - Handle protocol-specific authentication with a new protocol
 - Learn new toolchains for debugging, monitoring and auditing
@@ -191,7 +191,7 @@ It trims function calling down to two building blocks:
 
 Just like operating systems use device drivers to communicate with hardware, LLMs need interface drivers to communicate with external systems. 
 The key here is that an **MCS driver doesn't handle a specific function or API**, it handles **all APIs using the same protocol over the same transport**.
-This makes it behave like a driver for the protocol and transport, abstracting these details for the LLM and client developer.
+This makes it behave like a driver for the protocol and transport, abstracting these details for the LLM and App developer.
 
 
 #### Universal Protocol Support
@@ -203,13 +203,13 @@ This makes it behave like a driver for the protocol and transport, abstracting t
 #### Direct API Integration
 Instead of:
 
-`Your API → MCP Wrapper → MCP Client → LLM`
+`Your API → MCP Wrapper → MCP Client → App → LLM`
 
 MCS enables:
 
-`Your API (with standard spec) → MCS Driver → LLM`
+`Your API → MCS Driver → App → LLM`
 
-**The crucial difference:** The MCS driver can handle any REST API, not just one specific API. Point it to different OpenAPI specs, and it works universally without modification.
+**The crucial difference:** A MCS driver for REST-HTTP can handle any REST API, not just one specific API. Point it to different OpenAPI specs, and it works universally without modification.
 
 #### Security by Design
 
@@ -265,23 +265,43 @@ MCP pioneered the concept, but MCS makes it practical. While MCP requires rebuil
 MCS doesn't replace MCP, it evolves the concept by removing the barriers that make integration difficult. The result is a standard that's easier to adopt, safer to deploy, and simpler to maintain.
 
 
+Du hast recht, der ausführliche Block hat mehr Substanz und zeigt konkret, wo Hilfe gebraucht wird. Lass uns beide Ansätze kombinieren - die konkrete Liste mit der direkten Tonalität:
+
+
 ## Contributing: Building the Ecosystem Together
-MCS thrives as an open standard, and we're building a collaborative ecosystem where your expertise makes a real difference.
+MCS is an open exploration of how LLM integration should work. The focus right now is refining the concept and proving it scales better than existing approaches.
 
-### Key Areas Where Support is Needed
+### Current State & Expectations
+**This is a proof-of-concept, not a product.** The Python SDK and examples exist to illustrate the idea and enable early experimentation. If you're looking for production-ready solutions, this isn't it...yet.\
+**What I'm doing:** Developing and refining the core concept, creating reference implementations, and exploring what's possible when we rethink LLM integration from first principles.\
+**What I'm not doing:** Providing free support, maintaining SLAs, or building your custom integrations. This is open source so everyone can learn. Take what's useful, leave what isn't.
 
-- Specification refinement is crucial for MCS's success. We need contributors to identify edge cases, develop model-specific optimizations, and help us reduce complexity to the absolute essentials. Every improvement benefits the entire ecosystem.
-- Driver development opens up new possibilities. Whether you're interested in creating drivers for GraphQL, MQTT, industrial protocols like CAN-Bus, or even specialized hardware like printers, your work enables countless applications. Our Python SDK provides a solid foundation to get started.
-- SDK expansion makes MCS accessible to more developers. We're particularly focused on fleshing out TypeScript support, with plans to generate interfaces from our Python implementation. If you're skilled in other languages, we'd welcome additional SDK contributions.
-- Documentation and tutorials help newcomers understand MCS's potential. We're looking for contributors to create practical guides, such as "Building a Custom Driver" tutorials that demonstrate the complete workflow from initialization to automated prompt handling.
-- Registry infrastructure will make driver discovery and sharing seamless. Help us launch mcs-pkg, a trusted repository system with checksum verification, similar to how APT or Maven handle package distribution.
-- Real-world examples and security best practices documentation ensure MCS deployments are both effective and secure. Share your integration experiences and help establish community standards.
+### How You Can Contribute
+- **Specification refinement** is crucial for MCS's success. We need contributors to identify edge cases, develop model-specific optimizations, and help us reduce complexity to the absolute essentials. Every improvement benefits the entire ecosystem.
+- **Driver development** opens up new possibilities. Whether you're interested in creating drivers for GraphQL, MQTT, industrial protocols like CAN-Bus, or even specialized hardware like printers, your work enables countless applications. The Python SDK provides a solid foundation to get started.
+- **SDK expansion** makes MCS accessible to more developers. We're particularly focused on fleshing out TypeScript support, with plans to generate interfaces from the Python implementation. If you're skilled in other languages, we'd welcome additional SDK contributions.
+- **Documentation and tutorials** help newcomers understand MCS's potential. We're looking for contributors to create practical guides, such as "Building a Custom Driver" tutorials that demonstrate the complete workflow from initialization to automated prompt handling.
+- **Registry infrastructure** will make driver discovery and sharing seamless. Help us launch mcs-pkg, a trusted repository system with checksum verification, similar to how APT or Maven handle package distribution. Not only for the drivers, but also with autoloading model specific prompts. See [Dynamic Optimization](https://modelcontextstandard.io/Specification/LLM_Prompt_Patterns)
+- **Real-world examples** and security best practices documentation ensure MCS deployments are both effective and secure. Share your integration experiences and help establish community standards.
 
-### Getting Started
-Visit our GitHub organization to explore the codebase and see current priorities. Check CONTRIBUTING.md for detailed guidelines on code standards, testing requirements, and submission processes.
+### Getting Real
+- **Want production support?** Hire a consultant.
+- **Found a bug?** PRs welcome, or fork it.
+- **Have a better approach?** Be my guest. I'd genuinely love to see it.
+- **Just want to complain?** There's a close button on your browser tab.
 
-Whether you're contributing code, documentation, or ideas, you're helping build the future of LLM integration. Every contribution, no matter how small, moves us closer to a world where connecting LLMs to external systems is as simple as plugging in a driver.
+The best contributions are the ones that push the concept forward. If you're here to help shape the future of LLM integration, welcome aboard.
+
+---
+
+*Visit our [GitHub organization](https://github.com/modelcontextstandard/.github/edit/main/profile/README.md#project-structure) to explore the code, specs and drivers. For deeper discussions about the concept and its implications: [modelcontextstandard.io](https://modelcontextstandard.io).*
 
 
 ## Acknowledgment 
 While MCS takes a different approach, it builds on the groundwork laid by the MCP team. Their effort in structuring documentation and project layout has been instrumental and deeply appreciated while putting the idea behind MCS online. Without MCP, the need for a standard like MCS might not have become so visible.
+
+## The Vision
+> "LLMs are the new operating systems." — Andrej Karpathy\
+**MCS supplies the drivers.**
+
+This isn't about building another tool, it's about establishing the foundational layer for AI-powered computing.
