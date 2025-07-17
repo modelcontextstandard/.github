@@ -155,6 +155,8 @@ This creates several problems:
 - Resource waste: Unnecessary processes consuming CPU and memory
 - Security multiplication: More servers mean more attack surfaces
 
+This problem persists even with MCP frameworks that generate servers from OpenAPI specs. You're still creating an unnecessary translation layer instead of using the API directly.
+
 ### The Autostart Security Risk
 MCP's STDIO-based autostart spawns processes with user privileges, creating potential security vulnerabilities:
 
