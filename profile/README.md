@@ -247,7 +247,7 @@ MCP pioneered the concept, but MCS makes it practical. While MCP requires rebuil
 | **Protocol** | Custom JSON-RPC stack | Standards like HTTP/OpenAPI |
 | **Server Architecture** | Wrapper server per API | Direct API connection |
 | **Autostart** | Required via STDIO | Optional, containerized |
-| **Authentication** | Custom implementation | Standard OAuth/JWT/API keys |
+| **Authentication** | Custom implementation | Provided by used standard, like OAuth/JWT/API keys for HTTP |
 | **Distribution** | Complex server deployment | Simple module download (APT/Maven-like) |
 | **Prompt Engineering** | App developer responsibility | Built into drivers |
 | **Reusability** | API-specific servers | Universal protocol drivers |
@@ -263,9 +263,6 @@ MCP pioneered the concept, but MCS makes it practical. While MCP requires rebuil
 **For organizations**, this translates to lower infrastructure costs, reduced security risks, faster time to market, and better resource utilization across development teams.
 
 MCS doesn't replace MCP, it evolves the concept by removing the barriers that make integration difficult. The result is a standard that's easier to adopt, safer to deploy, and simpler to maintain.
-
-
-Du hast recht, der ausführliche Block hat mehr Substanz und zeigt konkret, wo Hilfe gebraucht wird. Lass uns beide Ansätze kombinieren - die konkrete Liste mit der direkten Tonalität:
 
 
 ## Contributing: Building the Ecosystem Together
