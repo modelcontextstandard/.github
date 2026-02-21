@@ -65,14 +65,15 @@ We recommend starting with the [docs](https://github.com/modelcontextstandard/do
 Once familiar, dive into the Python SDK to see how drivers are built in practice. It also serves as a blueprint for implementing SDKs in other languages.
 
 
-## Quickstart: See It in Action in Under 2 Minutes
+## Quickstart: The Idea in Under 2 Minutes
 
-It is simple to verify how MCS works in principle.  
-Use any LLM with web access to connect to a simple OpenAPI-enabled tool. This demonstrates the core concept.
+You don’t need a complex setup to inject context into an LLM. No protocol, no wrapper server, no SDK. A well-described API and a model that can read it – that’s all it takes.
 
-This project provides a tiny FastAPI demo that exposes a **readable OpenAPI HTML spec** and a test function (`fibonacci`) that returns `2 × Fibonacci(n)`, helping detect hallucinations.
+This demo proves exactly that. It uses **no MCS driver at all**. Instead, it shows the raw principle that MCS is built on: if an LLM can read a function description and call the endpoint, the integration is already done.
 
-> ℹ️ Most LLMs can currently access external content only via `GET` requests and basic HTML parsing. But that’s enough for this test.
+We provide a tiny FastAPI service that exposes a **readable OpenAPI HTML spec** and a test function (`fibonacci`) that returns `2 × Fibonacci(n)`, helping detect hallucinations.
+
+> ℹ️ Most LLMs can currently access external content only via `GET` requests and basic HTML parsing. But that’s enough to demonstrate the concept.
 
 
 ### Deploy the Demo (VPS, Docker, Cloud)
@@ -123,9 +124,11 @@ Click on the links to see the results in the chats with the LLMs.
 
 
 ### What This Shows
-Even without anything special in place, modern LLMs can already interact with well-described APIs.
-The demo shows the minimal setup needed to close the gap between LLM and real-world functions.
-**This principle scales:** By standardizing function calling itself, the direct text input/output interface to LLMs, MCS makes this integration seamless and universal. 
+Even without any MCS driver in place, modern LLMs can already interact with well-described APIs. No wrapper, no protocol – just a spec and an endpoint.
+
+This is exactly the simplicity that MCS formalizes. A driver packages the spec, the prompt, and the execution logic into a reusable component. What you just did manually (read the spec, call the endpoint), the driver does automatically – for every LLM, every time.
+
+**Next step:** Run a real MCS driver with a local LLM client in Docker – see the [Python SDK](https://github.com/modelcontextstandard/python-sdk) for examples.
 
 
 ## How It Works: The Conversation Loop
