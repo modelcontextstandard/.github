@@ -11,7 +11,7 @@ No new protocol stack, no security headaches. Just reusable drivers that work ev
 Ready to Build?\
 → Start with the [2-minute quickstart](#quickstart-see-it-in-action-in-under-2-minutes)\
 → Build your first driver with the [Python SDK](https://github.com/modelcontextstandard/python-sdk)\
-→ Or use ready-made drivers: REST-HTTP (Python SDK), [Filesystem-localfs](https://github.com/modelcontextstandard/msc-tool-driver-filesystem-localfs), and more coming\
+→ Or use ready-made drivers: [REST-HTTP](https://github.com/modelcontextstandard/mcs-driver-rest-http), [Filesystem-localfs](https://github.com/modelcontextstandard/mcs-driver-filesystem-localfs), and more coming\
 → Still curious? You might want to [Read The Friendly Manual](https://modelcontextstandard.io/)
 
 ## Key Benefits: Why Choose MCS?
@@ -30,6 +30,7 @@ MCS avoids custom stacks and utilizes battle-tested standards first like OpenAPI
 ### ✅ No More Glue Code
 If your API already exists, why wrap it again? MCS connects directly to it. 
 Skip the wrapper server. Just point to the spec and you're ready to go.
+Don't need every endpoint? Cherry-pick the ones you need, add LLM-optimized descriptions, and save tokens. Share the curated toolset as a simple JSON file -- no custom server required.
 
 ### ✅ Optimized Prompts? Built-In
 MCS drivers include refined prompts tested across models. 
@@ -57,7 +58,8 @@ Your app stays focused.
 [typescript-sdk](https://github.com/modelcontextstandard/typescript-sdk) – TypeScript SDK (in progress – based on the Python implementation) <br>
 [mcs-pkg](https://github.com/modelcontextstandard/mcs-pkg) – Centralized registry for discovering and publishing MCS drivers (planned – think apt for AI tools with autodiscovery and installation). <br>
 [example-drivers] - A sample driver repo for tutorials and testing. (coming soon) <br>
-[mcs-tool-driver-filesystem-localfs](https://github.com/modelcontextstandard/mcs-tool-driver-filesystem-localfs) – A reference driver for local file system access. <br>
+[mcs-driver-rest-http](https://github.com/modelcontextstandard/mcs-driver-rest-http) – Hybrid driver for REST APIs over HTTP (OpenAPI). <br>
+[mcs-driver-filesystem-localfs](https://github.com/modelcontextstandard/mcs-driver-filesystem-localfs) – Reference driver for local file system access. <br>
 <br>
 We recommend starting with the [docs](https://github.com/modelcontextstandard/docs) to understand the core ideas.
 Once familiar, dive into the Python SDK to see how drivers are built in practice. It also serves as a blueprint for implementing SDKs in other languages.
