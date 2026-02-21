@@ -133,28 +133,28 @@ This is exactly the simplicity that MCS formalizes. A driver packages the spec, 
 
 ## How It Works: The Conversation Loop
 
-In a real application the client, the LLM and one or more drivers interact in a loop. The driver stays stateless per-conversation; the client manages the history:
+In a real application the client, the LLM and one or more drivers interact in a loop. The driver is **stateless** -- all outcome information lives in the returned `DriverResponse`:
 
 ```
-User ──► Client ──► LLM ──► process_llm_response() ──► call_executed?
+User ──► Client ──► LLM ──► process_llm_response() ──► DriverResponse
                      ▲              │                       │
-                     │          result                call_failed?
+                     │          response.result      response.call_executed?
                      │              │                  │         │
                      └──────────────┘           retry     no match
                                                   │         │
-                                         get_retry_prompt  Final answer
+                                     response.retry_prompt  Final answer
                                                   │
                      ┌────────────────────────────┘
                      ▼
 ```
 
 1. The client sends the conversation (system prompt + message history) to the LLM.
-2. The LLM responds. The client passes the response to `process_llm_response()`.
-3. If `call_executed` is true: the client appends the tool result to the history and loops back to step 1.
-4. If `call_failed` is true: the driver found a tool-call signature but could not parse or execute it. The client appends `get_retry_prompt()` and loops back.
-5. If neither flag is set: the LLM's response is the final answer.
+2. The LLM responds. The client passes the response to `process_llm_response()` which returns a `DriverResponse`.
+3. If `response.call_executed` is true: the client appends `response.result` to the history and loops back to step 1.
+4. If `response.call_failed` is true: the driver found a tool-call signature but could not parse or execute it. The client appends `response.retry_prompt` and loops back.
+5. If neither flag is set: `response.result` is the LLM's final answer.
 
-The driver never talks to the LLM directly. It only provides the spec and executes calls. New transports and protocols only need a new driver, not changes to the client or the LLM integration.
+The driver never talks to the LLM directly. It only provides the spec and executes calls. Because the driver holds no mutable state, it is thread-safe by design. New transports and protocols only need a new driver, not changes to the client or the LLM integration.
 
 → For details see the [Specification](https://github.com/modelcontextstandard/specification) and [Documentation](https://modelcontextstandard.io/).
 
