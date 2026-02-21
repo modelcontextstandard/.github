@@ -52,15 +52,14 @@ Your app stays focused.
 
 ## Project Structure
 
-[specification](https://github.com/modelcontextstandard/specification) – The core specification (Driver Contract). We're optimizing this together - Join the discussion!  <br>
-[docs](https://github.com/modelcontextstandard/docs) – In-depth guides and examples (coming soon) <br>
+[docs](https://github.com/modelcontextstandard/docs) – The core specification (Driver Contract), in-depth guides and examples. We're optimizing this together - Join the discussion!  <br>
 [python-sdk](https://github.com/modelcontextstandard/python-sdk) – Ready to use Python implementation with reference drivers. Install via pip and start building.  <br>
 [typescript-sdk](https://github.com/modelcontextstandard/typescript-sdk) – TypeScript SDK (in progress – based on the Python implementation) <br>
 [mcs-pkg](https://github.com/modelcontextstandard/mcs-pkg) – Centralized registry for discovering and publishing MCS drivers (planned – think apt for AI tools with autodiscovery and installation). <br>
 [example-drivers] - A sample driver repo for tutorials and testing. (coming soon) <br>
 [mcs-tool-driver-filesystem-localfs](https://github.com/modelcontextstandard/mcs-tool-driver-filesystem-localfs) – A reference driver for local file system access. <br>
 <br>
-We recommend starting with the specification to understand the core ideas.
+We recommend starting with the [docs](https://github.com/modelcontextstandard/docs) to understand the core ideas.
 Once familiar, dive into the Python SDK to see how drivers are built in practice. It also serves as a blueprint for implementing SDKs in other languages.
 
 
