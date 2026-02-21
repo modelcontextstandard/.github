@@ -4,9 +4,9 @@
 
 Imagine transforming your LLM into a supercharged operating system. Effortlessly linking to APIs, databases, industrial systems, or even printers without reinventing the wheel.
 
-MCS is the lightweight standard that makes it happen.
+MCS is the lightweight standard that makes it happen. It standardizes the driver contract, not the wire format -- so you keep using the protocols and tools you already know.
 
-No bloated protocols, no security headaches. Just reusable drivers that work everywhere. If you're tired of MCP's overhead and vulnerabilities, MCS is your upgrade. Built on proven tech like OpenAPI and REST, it's the future of AI integration.
+No new protocol stack, no security headaches. Just reusable drivers that work everywhere. If you're tired of MCP's overhead and vulnerabilities, MCS is your upgrade. Built on proven tech like OpenAPI and REST, it's the future of AI integration.
 
 Ready to Build?\
 → Start with the [2-minute quickstart](#quickstart-see-it-in-action-in-under-2-minutes)\
@@ -38,8 +38,7 @@ It's future-proof too with potential dynamic hubs using checksums to auto-load u
 
 ### ✅ Autostart? Not Required
 MCP autostart is not a feature, it is a design flaw, because STDIO transport forces it. MCS avoids that. Drivers connect directly to existing systems, avoiding unnecessary CPU usage and security risks.
-Use autostart only when needed and do it safely. MCS makes suggestions how to implement this more safely, but in 99% the cases you do not need autostart anymore.
-Say goodbye to malicious servers (up to 8% on Github) [1](https://blog.virustotal.com/2025/06/what-17845-github-repos-taught-us-about.html).
+Use autostart only when needed and do it safely. MCS makes suggestions how to implement this more safely, but in 99% of cases you do not need autostart anymore.
 
 ### ✅ Compatible with MCP, but Cleaner
 MCP pioneered standardization in this area, MCS makes it practical.
@@ -53,7 +52,7 @@ Your app stays focused.
 
 ## Project Structure
 
-[specification](https://github.com/modelcontextstandard/specification) – The core Protocol Spec. We're optimizing this together - Join the discussion!  <br>
+[specification](https://github.com/modelcontextstandard/specification) – The core specification (Driver Contract). We're optimizing this together - Join the discussion!  <br>
 [docs](https://github.com/modelcontextstandard/docs) – In-depth guides and examples (coming soon) <br>
 [python-sdk](https://github.com/modelcontextstandard/python-sdk) – Ready to use Python implementation with reference drivers. Install via pip and start building.  <br>
 [typescript-sdk](https://github.com/modelcontextstandard/typescript-sdk) – TypeScript SDK (in progress – based on the Python implementation) <br>
@@ -128,6 +127,34 @@ The demo shows the minimal setup needed to close the gap between LLM and real-wo
 **This principle scales:** By standardizing function calling itself, the direct text input/output interface to LLMs, MCS makes this integration seamless and universal. 
 
 
+## How It Works: The Conversation Loop
+
+In a real application the client, the LLM and one or more drivers interact in a loop. The driver stays stateless per-conversation; the client manages the history:
+
+```
+User ──► Client ──► LLM ──► process_llm_response() ──► call_executed?
+                     ▲              │                       │
+                     │          result                call_failed?
+                     │              │                  │         │
+                     └──────────────┘           retry     no match
+                                                  │         │
+                                         get_retry_prompt  Final answer
+                                                  │
+                     ┌────────────────────────────┘
+                     ▼
+```
+
+1. The client sends the conversation (system prompt + message history) to the LLM.
+2. The LLM responds. The client passes the response to `process_llm_response()`.
+3. If `call_executed` is true: the client appends the tool result to the history and loops back to step 1.
+4. If `call_failed` is true: the driver found a tool-call signature but could not parse or execute it. The client appends `get_retry_prompt()` and loops back.
+5. If neither flag is set: the LLM's response is the final answer.
+
+The driver never talks to the LLM directly. It only provides the spec and executes calls. New transports and protocols only need a new driver, not changes to the client or the LLM integration.
+
+→ For details see the [Specification](https://github.com/modelcontextstandard/specification) and [Documentation](https://modelcontextstandard.io/).
+
+
 ## Why MCS exists: The Problem with Current Solutions
 LLMs are becoming the core of modern software stacks, but connecting them to external systems remains unnecessarily complex. MCP deserves credit for being the first serious attempt to standardize function calling. It sparked the revolution and gave developers a protocol to build upon.
 
@@ -155,6 +182,11 @@ This creates several problems:
 - Resource waste: Unnecessary processes consuming CPU and memory
 - Security multiplication: More servers mean more attack surfaces
 
+This is not just our assessment. Prominent voices in the developer community have reached the same conclusion:
+
+- *"Stop Converting Your REST APIs to MCP"* [7](https://www.jlowin.dev/blog/stop-converting-rest-apis-to-mcp) argues that auto-wrapping REST APIs poisons AI agents with human-oriented granularity, polluting context and compounding tool-choice errors.
+- *"Stop Generating MCP Servers from REST APIs!"* [8](https://www.kylestratis.com/posts/stop-generating-mcp-servers-from-rest-apis/) shows that five chained REST calls with 95% individual accuracy drop overall success to ~77%, costing roughly 7x more tokens than a single purpose-built tool.
+
 This problem persists even with MCP frameworks that generate servers from OpenAPI specs. You're still creating an unnecessary translation layer instead of using the API directly.
 
 ### The Autostart Security Risk
@@ -164,7 +196,7 @@ MCP's STDIO-based autostart spawns processes with user privileges, creating pote
 - Process bloat: Background processes running even when not needed
 - Privilege escalation risks: One compromised server can affect the entire system
 
-Research suggests up to 8% of MCP servers on GitHub contain potentially malicious code [1](https://blog.virustotal.com/2025/06/what-17845-github-repos-taught-us-about.html).
+Research suggests up to 8% of MCP servers on GitHub contain potentially malicious code [1](https://blog.virustotal.com/2025/06/what-17845-github-repos-taught-us-about.html). Enterprise security experts echo these concerns: an analysis found 88% of MCP servers require credentials, with 53% relying on static, long-lived secrets. The conclusion: *"stdio-based MCP servers break nearly every enterprise security pattern"* [9](https://blog.christianposta.com/mcp-should-be-remote/).
 
 ### The Development Burden
 For every MCP client/app developer:
@@ -186,8 +218,8 @@ MCS addresses these pain points by recognizing that this is fundamentally a driv
 
 It trims function calling down to two building blocks:
 
-    Spec: Machine-readable function descriptions (OpenAPI, JSON-Schema, ...) – use standards if possible!
-    Bridge: Transport layers (HTTP, AS2, CAN, ...) – handled by parsers.
+- **Spec:** Machine-readable function descriptions (OpenAPI, JSON-Schema, ...) -- use standards if possible!
+- **Bridge:** Transport layers (HTTP, AS2, CAN, ...) -- handled by parsers.
 
 Just like operating systems use device drivers to communicate with hardware, LLMs need interface drivers to communicate with external systems. 
 The key here is that an **MCS driver doesn't handle a specific function or API**, it handles **all APIs using the same protocol over the same transport**.
@@ -218,7 +250,7 @@ MCS enables:
 - Reduced attack surface: Fewer components, established security practices
 - Standard authentication: OAuth, API keys, JWT – use what already works
 
-MCS drivers are components like software modules that can be downloaded and used directly. This enables trusted driver repositories with checksum verification, similar to APT or Maven. Making secure deployment and auto-loading straightforward.
+MCS drivers are static components like software modules that can be downloaded and used directly. This enables trusted driver repositories with checksum verification, similar to APT or Maven. Making secure deployment and auto-loading straightforward.
 
 #### Developer Experience
 With MCS, developers get:
@@ -234,8 +266,8 @@ With MCS, developers get:
 Already using MCP? MCS provides a smooth transition:
 
 - Wrap existing MCP servers as MCS drivers (mcs-driver-mcp-stdio)
-Gradual migration without breaking existing functionality
-Immediate benefits for new integrations
+- Gradual migration without breaking existing functionality
+- Immediate benefits for new integrations
 
 
 #### The Bottom Line
