@@ -37,9 +37,9 @@ MCS drivers include refined prompts tested across models.
 No manual prompt tuning on the client/app side needed. MCS handles model-specific quirks automatically.
 It's future-proof too with potential dynamic hubs using checksums to auto-load updated, high-performance versions for new models. 
 
-### ✅ Autostart? Not Required
-MCP autostart is not a feature, it is a design flaw, because STDIO transport forces it. MCS avoids that. Drivers connect directly to existing systems, avoiding unnecessary CPU usage and security risks.
-Use autostart only when needed and do it safely. MCS makes suggestions how to implement this more safely, but in 99% of cases you do not need autostart anymore.
+### ✅ Built-In Credential Isolation
+The driver acts as a trust boundary. Credentials live in the driver constructor -- configured by the operator, invisible to the agent. The agent calls `execute_tool()` and gets results, never secrets.
+No shell access to credential files, no environment variable leaks. The driver is the tool execution layer that agent frameworks are missing today.
 
 ### ✅ Compatible with MCP, but Cleaner
 MCP pioneered standardization in this area, MCS makes it practical.
@@ -291,6 +291,7 @@ MCP pioneered the concept, but MCS makes it practical. While MCP requires rebuil
 | **Tooling** | Custom debugging/monitoring | Standard tools can be used |
 | **Learning Curve** | High (new protocol) | Low (uses familiar standards) |
 | **Integration Effort** | High (wrapper + client code) | Low (configure driver) |
+| **Credential Isolation** | Agent sees server secrets | Driver holds secrets, agent sees only results |
 
 
 
