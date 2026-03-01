@@ -276,21 +276,22 @@ MCP pioneered the concept, but MCS makes it practical. While MCP requires rebuil
 
 
 
-## Contributing: Building the Ecosystem Together
-MCS is an open exploration of how LLM integration should work. The focus right now is refining the concept and proving it scales better than existing approaches.
+## Where MCS Stands Today
 
-### Current State & Expectations
-**This is a proof-of-concept, not a product.** The Python SDK and examples exist to illustrate the idea and enable early experimentation. If you're looking for production-ready solutions, this isn't it...yet.\
-**What I'm doing:** Developing and refining the core concept, creating reference implementations, and exploring what's possible when we rethink LLM integration from first principles.\
-**What I'm not doing:** Providing free support, maintaining SLAs, or building your custom integrations. This is open source so everyone can learn. Take what's useful, leave what isn't.
+The specification is complete, the architecture is in place, and the first drivers are being built right now. **This is not a product yet -- it's a working foundation.**
 
-### How You Can Contribute
-- **Specification refinement** is crucial for MCS's success. We need contributors to identify edge cases, develop model-specific optimizations, and help us reduce complexity to the absolute essentials. Every improvement benefits the entire ecosystem.
-- **Driver development** opens up new possibilities. Whether you're interested in creating drivers for GraphQL, MQTT, industrial protocols like CAN-Bus, or even specialized hardware like printers, your work enables countless applications. The Python SDK provides a solid foundation to get started.
-- **SDK expansion** makes MCS accessible to more developers. We're particularly focused on fleshing out TypeScript support, with plans to generate interfaces from the Python implementation. If you're skilled in other languages, we'd welcome additional SDK contributions.
-- **Documentation and tutorials** help newcomers understand MCS's potential. We're looking for contributors to create practical guides, such as "Building a Custom Driver" tutorials that demonstrate the complete workflow from initialization to automated prompt handling.
-- **Registry infrastructure** will make driver discovery and sharing seamless. Help us launch mcs-pkg, a trusted repository system with checksum verification, similar to how APT or Maven handle package distribution. Not only for the drivers, but also with autoloading model specific prompts. See [Dynamic Optimization](https://modelcontextstandard.io/Specification/LLM_Prompt_Patterns)
-- **Real-world examples** and security best practices documentation ensure MCS deployments are both effective and secure. Share your integration experiences and help establish community standards.
+What's already here:
+- **Specification** -- The full driver contract, adapter pattern, prompt strategy system, and orchestrator architecture are defined and documented.
+- **Python SDK** -- A monorepo with core interfaces, a REST-HTTP driver, a filesystem driver, a CSV driver, and orchestrators with pluggable resolution strategies.
+- **Prompt Strategy as Codec** -- All prompt elements are loaded from external config files (TOML), hot-swappable without code changes. The framework for model-specific prompt optimization is ready.
+- **Extraction Strategy layer** -- Drivers auto-detect whether the LLM responds in text, OpenAI function-call format, or custom dict format. New formats are pluggable.
+
+What needs the community:
+- **Prompt tuning per model** -- The infrastructure is there to swap and version prompt strategies. What's missing is systematic testing: which phrasing works best for GPT-4, Claude, Llama, Gemini? Every tested configuration becomes a reusable artifact for everyone.
+- **More drivers** -- GraphQL, MQTT, CAN-Bus, MCP-STDIO bridge, specialized hardware. One driver enables every LLM app on the planet.
+- **TypeScript SDK** -- Next priority, with plans to generate interfaces from the Python implementation.
+- **Registry infrastructure** -- Help launch mcs-pkg, a trusted driver repository with checksum verification (think APT/Maven for LLM drivers, but only for the metadata). Also for autoloading model-specific prompts. See [Dynamic Optimization](https://modelcontextstandard.io/Specification/LLM_Prompt_Patterns).
+- **Real-world battle testing** -- Share your integration experiences, edge cases, and security findings.
 
 ### Getting Real
 - **Want production support?** Hire a consultant.
@@ -298,7 +299,7 @@ MCS is an open exploration of how LLM integration should work. The focus right n
 - **Having a good idea?** Be my guest. I'd genuinely love to see it.
 - **Just want to complain?** There's a close button on your browser tab.
 
-The best contributions are the ones that push the concept forward. If you're here to help shape the future of LLM integration, welcome aboard.
+The foundation is solid. Now it's about making every promise on this page a reality. If you're here to help shape the future of LLM integration, welcome aboard.
 
 ---
 
