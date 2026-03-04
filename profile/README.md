@@ -310,7 +310,7 @@ Open a Discussion, file an Issue, or submit a PR in the respective repo.
 - **Having a good idea?** Be my guest. I'd genuinely love to see it.
 - **Just want to complain?** There's a close button on your browser tab.
 
-The foundation is solid. Now it's about making every promise on this page a reality. If you're here to help shape the future of LLM integration, welcome aboard.
+The foundation is SOLID. Now it's about making every promise on this page a reality. If you're here to help shape the future of LLM integration, welcome aboard.
 
 > **Proof-of-Work Notice** -- Repos shared as-is. PRs/issues evaluated based on alignment and time. No guarantees, but great contributions shine!
 
