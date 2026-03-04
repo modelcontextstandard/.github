@@ -273,8 +273,6 @@ MCP pioneered the concept, but MCS makes it practical. While MCP requires rebuil
 | **Credential Isolation** | Agent sees server secrets | Driver holds secrets, agent sees only results |
 
 
-
-
 ## Where MCS Stands Today
 
 The specification is complete, the architecture is in place, and the first drivers are being built right now. **This is not a product yet -- it's a working foundation.**
@@ -285,12 +283,22 @@ What's already here:
 - **Prompt Strategy as Codec** -- All prompt elements are loaded from external config files (TOML), hot-swappable without code changes. The framework for model-specific prompt optimization is ready.
 - **Extraction Strategy layer** -- Drivers auto-detect whether the LLM responds in text, OpenAI function-call format, or custom dict format. New formats are pluggable.
 
-What needs the community:
-- **Prompt tuning per model** -- The infrastructure is there to swap and version prompt strategies. What's missing is systematic testing: which phrasing works best for GPT-4, Claude, Llama, Gemini? Every tested configuration becomes a reusable artifact for everyone.
-- **More drivers** -- GraphQL, MQTT, CAN-Bus, MCP-STDIO bridge, specialized hardware. One driver enables every LLM app on the planet.
-- **TypeScript SDK** -- Next priority, with plans to generate interfaces from the Python implementation.
-- **Registry infrastructure** -- Help launch mcs-pkg, a trusted driver repository with checksum verification (think APT/Maven for LLM drivers, but only for the metadata). Also for autoloading model-specific prompts. See [Dynamic Optimization](https://modelcontextstandard.io/Specification/LLM_Prompt_Patterns).
-- **Real-world battle testing** -- Share your integration experiences, edge cases, and security findings.
+### Contributing -- where to go
+
+| Topic | Repo | What belongs here |
+| --- | --- | --- |
+| **Standard & specification** | [docs](https://github.com/modelcontextstandard/docs) | Spec refinements, edge cases, architectural discussions. This is the source of truth for the MCS standard. |
+| **Python SDK & drivers** | [python-sdk](https://github.com/modelcontextstandard/python-sdk) | New drivers, adapters, bug fixes, prompt strategies, examples. See [CONTRIBUTING.md](https://github.com/modelcontextstandard/python-sdk/blob/main/CONTRIBUTING.md). |
+| **TypeScript SDK** | [typescript-sdk](https://github.com/modelcontextstandard/typescript-sdk) | The next milestone. Got Claude Code warmed up or you're the TypeScript fox? This is where the action is. |
+
+**Highest impact right now:**
+- **New drivers** -- GraphQL, MQTT, CAN-Bus, MCP-STDIO bridge, specialized hardware. One driver enables every LLM app on the planet.
+- **Prompt tuning per model** -- The infrastructure for swappable prompt strategies is there. What's missing: systematic testing across GPT-4, Claude, Llama, Gemini. Every tested config becomes a reusable artifact for everyone.
+- **TypeScript SDK** -- Port the Python interfaces and get the ecosystem rolling in a second language.
+- **Registry infrastructure** -- Help launch mcs-pkg, a trusted driver repository with checksum verification. See [Dynamic Optimization](https://modelcontextstandard.io/Specification/LLM_Prompt_Patterns).
+- **Real-world battle testing** -- Edge cases, security findings, integration stories.
+
+Open a Discussion, file an Issue, or submit a PR in the respective repo.
 
 ### Getting Real
 - **Want production support?** Hire a consultant.
@@ -300,9 +308,7 @@ What needs the community:
 
 The foundation is solid. Now it's about making every promise on this page a reality. If you're here to help shape the future of LLM integration, welcome aboard.
 
----
-
-*Visit our [GitHub organization](https://github.com/modelcontextstandard/.github/edit/main/profile/README.md#project-structure) to explore the code, specs and drivers. For deeper discussions about the concept and its implications: [modelcontextstandard.io](https://modelcontextstandard.io).*
+> **Proof-of-Work Notice** -- Repos shared as-is. PRs/issues evaluated based on alignment and time. No guarantees, but great contributions shine!
 
 
 ## Acknowledgment 
