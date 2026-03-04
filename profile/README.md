@@ -60,16 +60,15 @@ MCP pioneered standardization, and MCS builds on the same core idea: function ca
 
 ## Project Structure
 
-[docs](https://github.com/modelcontextstandard/docs) – The core specification (Driver Contract), in-depth guides and examples. We're optimizing this together - Join the discussion!  <br>
-[python-sdk](https://github.com/modelcontextstandard/python-sdk) – Ready to use Python implementation with reference drivers. Install via pip and start building.  <br>
-[typescript-sdk](https://github.com/modelcontextstandard/typescript-sdk) – TypeScript SDK (in progress – based on the Python implementation) <br>
-[mcs-pkg](https://github.com/modelcontextstandard/mcs-pkg) – Centralized registry for discovering and publishing MCS drivers (planned – think apt for AI tools with autodiscovery and installation). <br>
-[example-drivers] - A sample driver repo for tutorials and testing. (coming soon) <br>
-[mcs-driver-rest-http](https://github.com/modelcontextstandard/mcs-driver-rest-http) – Hybrid driver for REST APIs over HTTP (OpenAPI). <br>
-[mcs-driver-filesystem-localfs](https://github.com/modelcontextstandard/mcs-driver-filesystem-localfs) – Reference driver for local file system access. <br>
-<br>
-We recommend starting with the [docs](https://github.com/modelcontextstandard/docs) to understand the core ideas.
-Once familiar, dive into the Python SDK to see how drivers are built in practice. It also serves as a blueprint for implementing SDKs in other languages.
+[docs](https://github.com/modelcontextstandard/docs) – The full [specification](https://github.com/modelcontextstandard/docs/tree/main/docs/Specification), guides, and [modelcontextstandard.io](https://modelcontextstandard.io). Start here. <br>
+[python-sdk](https://github.com/modelcontextstandard/python-sdk) – Reference implementation with drivers, adapters, orchestrators, and examples. Install via pip and start building. <br>
+[typescript-sdk](https://github.com/modelcontextstandard/typescript-sdk) – TypeScript SDK (in progress -- based on the Python implementation). <br>
+[mcs-pkg](https://github.com/modelcontextstandard/mcs-pkg) – Centralized registry for discovering and publishing MCS drivers (planned). <br>
+
+**Flagship driver:** [`mcs-driver-rest`](https://github.com/modelcontextstandard/python-sdk/tree/main/packages/drivers/mcs-driver-rest) -- Point it at any OpenAPI spec and your LLM can call the API. `pip install mcs-driver-rest` <br>
+More drivers (filesystem, CSV), adapters, and orchestrators ship in the [python-sdk monorepo](https://github.com/modelcontextstandard/python-sdk/tree/main/packages).
+
+Read the [specification](https://github.com/modelcontextstandard/docs/tree/main/docs/Specification) first to understand the core ideas. Then dive into the [Python SDK README](https://github.com/modelcontextstandard/python-sdk#readme) for the practical side -- from using existing drivers to building your own.
 
 
 ## See It Working: The Raw Principle in 2 Minutes
