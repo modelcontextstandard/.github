@@ -60,7 +60,7 @@ MCP pioneered standardization, and MCS builds on the same core idea: function ca
 
 ## Project Structure
 
-[docs](https://github.com/modelcontextstandard/docs) – The full [specification](https://github.com/modelcontextstandard/docs/tree/main/docs/Specification), guides, and [modelcontextstandard.io](https://modelcontextstandard.io). Start here. <br>
+[docs](https://github.com/modelcontextstandard/docs) – The full specification, guides on [modelcontextstandard.io](https://modelcontextstandard.io). Start here. <br>
 [python-sdk](https://github.com/modelcontextstandard/python-sdk) – Reference implementation with drivers, adapters, orchestrators, and examples. Install via pip and start building. <br>
 [typescript-sdk](https://github.com/modelcontextstandard/typescript-sdk) – TypeScript SDK (in progress -- based on the Python implementation). <br>
 [mcs-pkg](https://github.com/modelcontextstandard/mcs-pkg) – Centralized registry for discovering and publishing MCS drivers (planned). <br>
@@ -68,7 +68,7 @@ MCP pioneered standardization, and MCS builds on the same core idea: function ca
 **Flagship driver:** [`mcs-driver-rest`](https://github.com/modelcontextstandard/python-sdk/tree/main/packages/drivers/mcs-driver-rest) -- Point it at any OpenAPI spec and your LLM can call the API. `pip install mcs-driver-rest` <br>
 More drivers (filesystem, CSV), adapters, and orchestrators ship in the [python-sdk monorepo](https://github.com/modelcontextstandard/python-sdk/tree/main/packages).
 
-Read the [specification](https://github.com/modelcontextstandard/docs/tree/main/docs/Specification) first to understand the core ideas. Then dive into the [Python SDK README](https://github.com/modelcontextstandard/python-sdk#readme) for the practical side -- from using existing drivers to building your own.
+Read the [specification](https://modelcontextstandard.io/) first to understand the core ideas. Then dive into the [Python SDK README](https://github.com/modelcontextstandard/python-sdk#readme) for the practical side -- from using existing drivers to building your own.
 
 
 ## See It Working: The Raw Principle in 2 Minutes
